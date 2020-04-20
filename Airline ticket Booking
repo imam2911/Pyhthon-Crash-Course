@@ -1,0 +1,295 @@
+#include<stdio.h>
+#include<stdlib.h>
+int Seats[4][10];
+struct login
+{
+    char name[20];
+    char email[40];
+    int mobile_number;
+    char password[20];
+
+};
+
+
+registration()
+{
+    FILE *log;
+    log=fopen("login.txt","w");
+    struct login user;
+    printf("Enter Your Name :");
+    scanf("%s",&user.name);
+    printf("Enter Your Email :");
+    scanf("%s",&user.email);
+    printf("Enter Your Mobile Number :");
+    scanf("%d",&user.mobile_number);
+    printf("Enter Your Password :");
+    scanf("%s",&user.password);
+    fwrite(&user,sizeof(user),1,log);
+    fclose(log);
+    printf("=======Your Email Address is your Username=======\n");
+    printf("=======Now Log In With Your User Id and Password=======\n");
+    printf("*****Press any Key to Continue*****\n");
+    getch();
+    system("CLS");
+    login();
+
+}
+
+travelplace()
+{
+    int choice;
+    printf("***********Please Select Your Travel Place**********\n\n");
+    printf("1.Dhaka to Chittagong\n");
+    printf("2.Chittagong to Dhaka\n");
+    printf("3.Dhaka to Khulna\n");
+    printf("4.Khulna to Dhaka\n");
+    printf("5.Dhaka to Sylhet\n");
+    printf("6.Sylhet to Dhaka\n");
+    scanf("%d",&choice);
+    if(choice==1||choice==2)
+    {
+        ticketprice_dhaka_to_chittagong();
+
+    }
+    else if(choice==3||choice==4)
+    {
+        ticketprice_dhaka_to_khulna();
+    }
+    else if(choice==5||choice==6)
+    {
+        ticketprice_dhaka_to_sylhet();
+    }
+}
+
+
+
+ticketprice_dhaka_to_chittagong()
+{
+    int choice,ticket;
+
+    printf("=====Please select Your Class=====\n\n\n");
+    printf("1.Business Class\n");
+    printf("2.Economy Class\n");
+    printf("3.Premium Class\n");
+
+
+    scanf("%d",&choice);
+    if(choice==1)
+    {
+        printf("Business Class Ticket Price : 4500 bdt\n");
+        printf("To See Seat and Booking press 1 \n");
+        scanf("%d",&ticket);
+        if(ticket==1)
+        {
+            DisplaySeats();
+
+        }
+        else
+            {
+                printf("Thanks for visit us");
+            }
+
+    }
+    else if(choice==2)
+    {
+        printf("Economy Class Ticket Price : 3000 bdt\n");
+        printf("To See Seat and Booking press 1 \n");
+        scanf("%d",&ticket);
+        if(ticket==1)
+        {
+            DisplaySeats();
+
+        }
+        else
+            {
+                printf("Thanks for visit us");
+            }
+
+    }
+    else if(choice==3)
+    {
+
+        printf("Premium Class Ticket Price : 7000 bdt\n");
+        printf("To See Seat and Booking press 1 \n");
+        scanf("%d",&ticket);
+        if(ticket==1)
+        {
+            DisplaySeats();
+
+        }
+        else
+            {
+                printf("Thanks for visit us");
+            }
+    }
+}
+
+
+ticketprice_dhaka_to_khulna()
+{
+    int choice;
+
+    printf("=====Please select Your Class=====\n\n\n");
+    printf("1.Business Class\n");
+    printf("2.Economy Class\n");
+    printf("3.Premium Class\n");
+
+
+    scanf("%d",&choice);
+    if(choice==1)
+    {
+        printf("Business Class Ticket Price : 4500 bdt");
+
+    }
+    else if(choice==2)
+    {
+        printf("Economy Class Ticket Price : 3500 bdt");
+
+    }
+    else if(choice==3)
+    {
+
+        printf("Premium Class Ticket Price : 7000 bdt");
+    }
+
+}
+
+ticketprice_dhaka_to_sylhet()
+{
+    int choice;
+
+    printf("=====Please select Your Class=====\n\n\n");
+    printf("1.Business Class\n");
+    printf("2.Economy Class\n");
+    printf("3.Premium Class\n");
+
+
+    scanf("%d",&choice);
+    if(choice==1)
+    {
+        printf("Business Class Ticket Price : 3500 bdt");
+
+    }
+    else if(choice==2)
+    {
+        printf("Economy Class Ticket Price : 2500 bdt");
+
+    }
+    else if(choice==3)
+    {
+
+        printf("Premium Class Ticket Price : 6000 bdt");
+    }
+
+}
+
+login()
+{
+    char email[40];
+    char password[20];
+    FILE *log;
+    log=fopen("login.txt","r");
+    struct login user;
+    printf("Enter Your Usename OR Email Address :");
+    scanf("%s",&email);
+    printf("Enter Your Password :");
+    scanf("%s",&password);
+    while(fread(&user,sizeof(user),1,log))
+    {
+        if(strcmp(email,user.email)==0&&strcmp(password,user.password)==0)
+        {
+            printf("**********Successfully Log In**********\n");
+            travelplace();
+
+        }
+        else
+        {
+
+            printf("=====User Id And Password are not matched=====\n =====Please Retry later=====\n");
+        }
+    }
+
+    fclose(log);
+
+}
+
+choose_seat()
+{
+    int row,col,k;
+    printf("Which row do you want to choose? : ");
+    scanf("%d", &row);
+    printf("Which seat do you want to select? : ");
+    scanf("%d", &col);
+    if (row > 4 || col > 10)
+    {
+        printf("Wrong Entry !! Try again\n");
+        choose_seat();
+    }
+    else if (Seats[row - 1][col - 1] != 0)
+    {
+        printf("Seat is already reserved try again !!\n");
+        choose_seat();
+    }
+    else
+    {
+        Seats[row - 1][col - 1] = 1;
+        printf("Congratulations!! Reservation Completed!!!\n");
+        DisplaySeats();
+    }
+}
+reserve_seats()
+    {
+        int NoOfSeats,i;
+        printf("How many seats do you want to reserve?\n");
+        scanf("%d", &NoOfSeats);
+        for (i = 1; i <= NoOfSeats; i++)
+        {
+            choose_seat();
+        }
+
+
+    }
+DisplaySeats()
+    {
+        int i, j,seatbook;
+        int Seats[4][10] = { 0 };
+        printf("\t \t Seats\n");
+        printf("\t1 2 3 4 5 6 7 8 9 10\n");
+
+        for (i = 0; i < 4; i++)
+        {
+            printf("Rows %d: ", i + 1);
+            for (j = 0; j < 10; j++)
+                printf("%d ", Seats[i][j]);
+            printf("\n");
+        }
+        printf("\n");
+        printf("Press 1 to reserve a seat");
+        scanf("%d",&seatbook);
+        if(seatbook==1)
+        {
+            reserve_seats();
+        }
+
+    }
+
+
+main()
+{
+    int choice;
+    printf("Press 1 For register \nPress 2 For LogIn\n");
+    scanf("%d",&choice);
+    if(choice==1)
+    {
+        system("CLS");
+        registration();
+    }
+    else if(choice==2)
+    {
+        system("CLS");
+        login();
+    }
+
+}
+
+
