@@ -1,3 +1,5 @@
+#Pizzas: Think of at least three kinds of your favorite pizza. Store these
+#pizza names in a list, and then use a for loop to print the name of each pizza.
 #problem Number : 4.1
 pizzas = ['Neapolitan Pizza','Chicago Pizza','Sicilian Pizza']
 for pizza in pizzas :
