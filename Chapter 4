@@ -1,0 +1,18 @@
+#problem Number : 4.1
+pizzas = ['Neapolitan Pizza','Chicago Pizza','Sicilian Pizza']
+for pizza in pizzas :
+    print(pizza)
+
+#problem number : 4.1(a)
+
+pizzas = ['Neapolitan Pizza','Chicago Pizza','Sicilian Pizza']
+for pizza in pizzas :
+    print("I Like " + pizza + "Pizza")
+
+
+#problem number : 4.1(b)
+
+pizzas = ['Neapolitan Pizza','Chicago Pizza','Sicilian Pizza']
+for pizza in pizzas :
+    print("I Like " + pizza + "Pizza")
+print("I really Love Pizza!")
