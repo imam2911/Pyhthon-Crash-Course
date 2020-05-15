@@ -18,3 +18,31 @@ pizzas = ['Neapolitan Pizza','Chicago Pizza','Sicilian Pizza']
 for pizza in pizzas :
     print("I Like " + pizza + "Pizza")
 print("I really Love Pizza!")
+
+
+
+
+#Dictionary into a Dictionary practice
+
+users = {
+    'imam2911' : {
+        'first_name' : 'Imam',
+        'last_name' : 'Hossain',
+        'location' : 'Gazipur',
+        },
+    #new user information
+
+    'dtanvir' : {
+        'first_name' : 'Tanvir',
+        'last_name' : 'Ahmed',
+        'location' : 'Gazipur'
+        },
+    }
+for username,user_info in users.items() :
+    print("\n Username : " + username)
+    full_name= user_info['first_name'] + " " + user_info['last_name']
+    location = user_info['location']
+    print("\t Full name : " + full_name.title())
+    print("\t Location : " + location.title())
+
+
