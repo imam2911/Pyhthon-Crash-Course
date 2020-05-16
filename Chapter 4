@@ -76,3 +76,19 @@ while current_number < 10 :
     if current_number % 2 == 0 :
         continue
     print(current_number)
+    
+#7-4. Pizza Toppings :
+
+pizza = "Enter a series of pizza toppings : "
+pizza+=" \n "
+
+while True :
+    stop = input(pizza)
+
+    if stop == 'quit' :
+        break
+    else :
+        print("I order :" + stop.title() + " pizza")
+
+
+
