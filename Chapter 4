@@ -67,3 +67,12 @@ while True :
     else:
         print(ask)
 
+# using continue in a loop
+    #print even number from 1 to 10
+
+current_number = 0
+while current_number < 10 :
+    current_number += 1
+    if current_number % 2 == 0 :
+        continue
+    print(current_number)
