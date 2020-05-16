@@ -126,3 +126,38 @@ while loop_active :
 
 for name,response in list_item.items() :
     print(name + "would you like to climb " + response + ".")
+    
+    
+#7-8. Deli
+
+sandwitch_order = ['hu','pu','chu']
+while sandwitch_order :
+    finished_san = sandwitch_order.pop()
+    print("I made your " + finished_san + " Sandwitch.")
+
+#7-9. No pastrami
+
+sandwitch_order = ['hu','pu','chu']
+while 'pu' in sandwitch_order :
+    sandwitch_order.remove('pu')
+print(sandwitch_order)
+
+#7-10. Drean vacation
+
+poll = { }
+
+repeat = True
+while repeat :
+    name = input("input your name : ")
+    visit = input("where you want to visit : ")
+    poll[name] = visit
+    #again want loop or not?
+    repeat = input("anyone want to go on tour ? yes or no")
+    if repeat == 'no' :
+        repeat = False
+#print out the result
+
+for name,visit in poll.items() :
+    print(name + ",welcome to " + visit + " journey!!")
+
+
