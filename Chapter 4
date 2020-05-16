@@ -97,7 +97,9 @@ customer_requiremet = ['pipe','motor','pump']
 store = [ ]
 while customer_requiremet :
     req_list = customer_requiremet.pop()
+    print("customer request list : " + req_list + ".")
     store.append(req_list)
 for equepment in store :
-    print(equepment)
+    print("Added item by shop manager : "+equepment + ".")
+
 
