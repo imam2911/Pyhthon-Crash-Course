@@ -103,3 +103,26 @@ for equepment in store :
     print("Added item by shop manager : "+equepment + ".")
 
 
+# Filling dictionary using a loop
+
+#set a flag to ensure the loop time
+
+list_item = { }
+
+loop_active = True
+
+while loop_active :
+    name = input("please enter your name :")
+    response = input("which mountain you want to climb?")
+    list_item[name] = response
+
+    #find the next loop run or not
+
+    repeat = input("wlould you like to store more item (yes or no)")
+    if repeat == 'no' :
+        loop_active = False
+
+#print the value in list item
+
+for name,response in list_item.items() :
+    print(name + "would you like to climb " + response + ".")
