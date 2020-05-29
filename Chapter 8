@@ -1,1 +1,6 @@
+""" passing information through a function """
+def user( username , age ) :
+    
+    print("hello " + username.title() + " You are " + age + " years old.")
 
+user('Imam','22')
